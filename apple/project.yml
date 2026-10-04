@@ -1,0 +1,69 @@
+name: MTM
+options:
+  bundleIdPrefix: com.yuxin1100.mtm
+  deploymentTarget:
+    macOS: "27.0"
+    iOS: "27.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: M895QG3H95
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1"
+    CURRENT_PROJECT_VERSION: "1"
+packages:
+  MTMKit:
+    path: MTMKit
+targets:
+  MTM-Mac:
+    type: application
+    platform: macOS
+    sources: [Mac]
+    dependencies:
+      - package: MTMKit
+        product: Wire
+      - package: MTMKit
+        product: Engine
+      - sdk: IOKit.framework
+    info:
+      path: Mac/Info.plist
+      properties:
+        CFBundleDisplayName: Palmpad   # must match the bundle file name; zh-Hans.lproj gives 掌控板
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.utilities
+        LSHasLocalizedDisplayName: true
+        NSLocalNetworkUsageDescription: 掌控板通过局域网或热点接收手机上的触控操作。
+        NSBonjourServices: [_mtm._udp]
+    settings:
+      base:
+        PRODUCT_NAME: Palmpad
+        PRODUCT_BUNDLE_IDENTIFIER: com.yuxin1100.mtm.mac
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: YES
+        SWIFT_OBJC_BRIDGING_HEADER: Mac/Bridging.h
+  MTM-iOS:
+    type: application
+    platform: iOS
+    sources: [iOS]
+    dependencies:
+      - package: MTMKit
+        product: Wire
+    info:
+      path: iOS/Info.plist
+      properties:
+        CFBundleDisplayName: 掌控板
+        UILaunchScreen: {}
+        UIRequiresFullScreen: true
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UISupportedInterfaceOrientations:
+          [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        NSLocalNetworkUsageDescription: 掌控板需要访问本地网络来发现并连接你的 Mac。
+        NSBonjourServices: [_mtm._udp]
+        CADisableMinimumFrameDurationOnPhone: true
+    settings:
+      base:
+        PRODUCT_NAME: Palmpad
+        PRODUCT_BUNDLE_IDENTIFIER: com.yuxin1100.mtm.ios
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"

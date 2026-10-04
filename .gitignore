@@ -1,0 +1,17 @@
+.DS_Store
+
+# Apple: build output and the project XcodeGen generates from project.yml
+apple/build/
+apple/build-ios/
+apple/MTM.xcodeproj/
+apple/MTMKit/.build/
+apple/MTMKit/.swiftpm/
+xcuserdata/
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+*.iml
