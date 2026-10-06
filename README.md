@@ -96,5 +96,10 @@ apple/
 android/           安卓应用（Kotlin），协议实现与 Swift 端一致
 PROTOCOL.md        通信协议
 HANDOFF.md         项目交接文档：架构、实现细节、校准依据、已知问题
+LICENSE            MIT 许可证
 vectors.json       Swift 与 Kotlin 两端协议互通的测试数据
 ```
+
+## 许可证
+
+[MIT](LICENSE)
